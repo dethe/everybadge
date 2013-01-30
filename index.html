@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Every Badge</title>
+	<title>Bertie Botts’ Every Flavour Badge</title>
     <style>
+        @font-face {
+            font-family: 'FontAwesome';
+            src: url('fontawesome-webfont.woff?') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         .edge{
             stroke: none;
             fill:  #E24D2B;
@@ -28,6 +35,15 @@
             stroke: none;
             fill: white;
             filter: url(#innershadow);
+        }
+
+        .icon{
+            font-family: FontAwesome;
+            font-weight: normal;
+            font-size: 96px;
+            filter: url(#dropshadow);
+            fill: url(#stripey);
+            text-anchor: middle;
         }
     </style>
 </head>
@@ -102,7 +118,7 @@
         function roundedPolygon(sides, radius, cornerRadius, klass){
             var angle = (Math.PI * 2) / sides;
             var corners = range(sides).map(function(idx){
-                return [Math.cos(idx * angle) * radius, Math.sin(idx * angle) * radius];
+                return [Math.cos(idx * angle + Math.PI / 6) * radius, Math.sin(idx * angle + Math.PI / 6) * radius];
             });
             // calculate midpoints
             var pt = getPointAtDistance(corners[0], corners[sides - 1], cornerRadius);
@@ -130,6 +146,238 @@
         circle.setAttribute('r', 80);
         circle.setAttribute('class', 'hole');
         svg.appendChild(circle);
+        var text = document.createElementNS(SVG_NS, 'text');
+        text.setAttribute('x', 0);
+        text.setAttribute('y', 30);
+        text.setAttribute('class', 'icon');
+        svg.appendChild(text);
+
+        var icons = {
+            glass: '\uf000',
+            music: '\uf001',
+            search: '\uf002',
+            envelope: '\uf003',
+            heart: '\uf004',
+            star: '\uf005',
+            starEmpty: '\uf006',
+            user: '\uf007',
+            film: '\uf008',
+            thLarge: '\uf009',
+            th: '\uf00a',
+            thList: '\uf00b',
+            ok: '\uf00c',
+            remove: '\uf00d',
+            zoomIn: '\uf00e',
+            zoomOut: '\uf010',
+            off: '\uf011',
+            signal: '\uf012',
+            cog: '\uf013',
+            trash: '\uf014',
+            home: '\uf015',
+            file: '\uf016',
+            time: '\uf017',
+            road: '\uf018',
+            downloadAlt: '\uf019',
+            download: '\uf01a',
+            upload: '\uf01b',
+            inbox: '\uf01c',
+            playCircle: '\uf01d',
+            repeat: '\uf01e',
+            refresh: '\uf021',
+            listAlt: '\uf022',
+            lock: '\uf023',
+            flag: '\uf024',
+            headphones: '\uf025',
+            volumeOff: '\uf026',
+            volumeDown: '\uf027',
+            volumeUp: '\uf028',
+            qrcode: '\uf029',
+            barcode: '\uf02a',
+            tag: '\uf02b',
+            tags: '\uf02c',
+            book: '\uf02d',
+            bookmark: '\uf02e',
+            print: '\uf02f',
+            camera: '\uf030',
+            font: '\uf031',
+            facetimeVideo: '\uf03d',
+            picture: '\uf03e',
+            pencil: '\uf040',
+            mapMarker: '\uf041',
+            okSign: '\uf058',
+            questionSign: '\uf059',
+            infoSign: '\uf05a',
+            screenshot: '\uf05b',
+            removeCircle: '\uf05c',
+            okCircle: '\uf05d',
+            banCircle: '\uf0fe',
+            shareAlt: '\uf064',
+            exclamationSign: '\uf06a',
+            gift: '\uf06b',
+            leaf: '\uf06c',
+            fire: '\uf06d',
+            eyeOpen: '\uf06e',
+            eyeClosed: '\uf070',
+            warningSign: '\uf071',
+            plane: '\uf072',
+            calendar: '\uf073',
+            random: '\uf074',
+            comment: '\uf075',
+            magnet: '\uf076',
+            retweet: '\uf079',
+            shoppingCart: '\uf07a',
+            folderClose: '\uf07b',
+            folderOpen: '\uf07c',
+            barChart: '\uf080',
+            twitterSign: '\uf081',
+            facebookSign: '\uf082',
+            cameraRetro: '\uf083',
+            key: '\uf084',
+            cogs: '\uf085',
+            comments: '\uf086',
+            thumbsUp: '\uf087',
+            thumbsDown: '\uf088',
+            starHalf: '\uf089',
+            heartEmpty: '\uf08a',
+            signout: '\uf08b',
+            pushpin: '\uf08d',
+            externalLink: '\uf08e',
+        };
+
+        // .icon-signin:before               { content: "\uf090"; }
+        // .icon-trophy:before               { content: "\uf091"; }
+        // .icon-github-sign:before          { content: "\uf092"; }
+        // .icon-upload-alt:before           { content: "\uf093"; }
+        // .icon-lemon:before                { content: "\uf094"; }
+        // .icon-phone:before                { content: "\uf095"; }
+        // .icon-check-empty:before          { content: "\uf096"; }
+        // .icon-bookmark-empty:before       { content: "\uf097"; }
+        // .icon-phone-sign:before           { content: "\uf098"; }
+        // .icon-twitter:before              { content: "\uf099"; }
+        // .icon-facebook:before             { content: "\uf09a"; }
+        // .icon-github:before               { content: "\uf09b"; }
+        // .icon-unlock:before               { content: "\uf09c"; }
+        // .icon-credit-card:before          { content: "\uf09d"; }
+        // .icon-rss:before                  { content: "\uf09e"; }
+
+        // .icon-hdd:before                  { content: "\uf0a0"; }
+        // .icon-bullhorn:before             { content: "\uf0a1"; }
+        // .icon-bell:before                 { content: "\uf0a2"; }
+        // .icon-certificate:before          { content: "\uf0a3"; }
+        // .icon-hand-right:before           { content: "\uf0a4"; }
+        // .icon-hand-left:before            { content: "\uf0a5"; }
+        // .icon-hand-up:before              { content: "\uf0a6"; }
+        // .icon-hand-down:before            { content: "\uf0a7"; }
+        // .icon-circle-arrow-left:before    { content: "\uf0a8"; }
+        // .icon-circle-arrow-right:before   { content: "\uf0a9"; }
+        // .icon-circle-arrow-up:before      { content: "\uf0aa"; }
+        // .icon-circle-arrow-down:before    { content: "\uf0ab"; }
+        // .icon-globe:before                { content: "\uf0ac"; }
+        // .icon-wrench:before               { content: "\uf0ad"; }
+        // .icon-tasks:before                { content: "\uf0ae"; }
+
+        // .icon-filter:before               { content: "\uf0b0"; }
+        // .icon-briefcase:before            { content: "\uf0b1"; }
+        // .icon-fullscreen:before           { content: "\uf0b2"; }
+
+        // .icon-group:before                { content: "\uf0c0"; }
+        // .icon-link:before                 { content: "\uf0c1"; }
+        // .icon-cloud:before                { content: "\uf0c2"; }
+        // .icon-beaker:before               { content: "\uf0c3"; }
+        // .icon-cut:before                  { content: "\uf0c4"; }
+        // .icon-copy:before                 { content: "\uf0c5"; }
+        // .icon-paper-clip:before           { content: "\uf0c6"; }
+        // .icon-save:before                 { content: "\uf0c7"; }
+        // .icon-sign-blank:before           { content: "\uf0c8"; }
+        // .icon-reorder:before              { content: "\uf0c9"; }
+        // .icon-list-ul:before              { content: "\uf0ca"; }
+        // .icon-list-ol:before              { content: "\uf0cb"; }
+        // .icon-strikethrough:before        { content: "\uf0cc"; }
+        // .icon-underline:before            { content: "\uf0cd"; }
+        // .icon-table:before                { content: "\uf0ce"; }
+
+        // .icon-magic:before                { content: "\uf0d0"; }
+        // .icon-truck:before                { content: "\uf0d1"; }
+        // .icon-pinterest:before            { content: "\uf0d2"; }
+        // .icon-pinterest-sign:before       { content: "\uf0d3"; }
+        // .icon-google-plus-sign:before     { content: "\uf0d4"; }
+        // .icon-google-plus:before          { content: "\uf0d5"; }
+        // .icon-money:before                { content: "\uf0d6"; }
+        // .icon-caret-down:before           { content: "\uf0d7"; }
+        // .icon-caret-up:before             { content: "\uf0d8"; }
+        // .icon-caret-left:before           { content: "\uf0d9"; }
+        // .icon-caret-right:before          { content: "\uf0da"; }
+        // .icon-columns:before              { content: "\uf0db"; }
+        // .icon-sort:before                 { content: "\uf0dc"; }
+        // .icon-sort-down:before            { content: "\uf0dd"; }
+        // .icon-sort-up:before              { content: "\uf0de"; }
+
+        // .icon-envelope-alt:before         { content: "\uf0e0"; }
+        // .icon-linkedin:before             { content: "\uf0e1"; }
+        // .icon-undo:before                 { content: "\uf0e2"; }
+        // .icon-legal:before                { content: "\uf0e3"; }
+        // .icon-dashboard:before            { content: "\uf0e4"; }
+        // .icon-comment-alt:before          { content: "\uf0e5"; }
+        // .icon-comments-alt:before         { content: "\uf0e6"; }
+        // .icon-bolt:before                 { content: "\uf0e7"; }
+        // .icon-sitemap:before              { content: "\uf0e8"; }
+        // .icon-umbrella:before             { content: "\uf0e9"; }
+        // .icon-paste:before                { content: "\uf0ea"; }
+        // .icon-lightbulb:before            { content: "\uf0eb"; }
+        // .icon-exchange:before             { content: "\uf0ec"; }
+        // .icon-cloud-download:before       { content: "\uf0ed"; }
+        // .icon-cloud-upload:before         { content: "\uf0ee"; }
+
+        // .icon-user-md:before              { content: "\uf0f0"; }
+        // .icon-stethoscope:before          { content: "\uf0f1"; }
+        // .icon-suitcase:before             { content: "\uf0f2"; }
+        // .icon-bell-alt:before             { content: "\uf0f3"; }
+        // .icon-coffee:before               { content: "\uf0f4"; }
+        // .icon-food:before                 { content: "\uf0f5"; }
+        // .icon-file-alt:before             { content: "\uf0f6"; }
+        // .icon-building:before             { content: "\uf0f7"; }
+        // .icon-hospital:before             { content: "\uf0f8"; }
+        // .icon-ambulance:before            { content: "\uf0f9"; }
+        // .icon-medkit:before               { content: "\uf0fa"; }
+        // .icon-fighter-jet:before          { content: "\uf0fb"; }
+        // .icon-beer:before                 { content: "\uf0fc"; }
+        // .icon-h-sign:before               { content: "\uf0fd"; }
+        // .icon-plus-sign-alt:before        { content: "\uf0fe"; }
+
+        // .icon-double-angle-left:before    { content: "\uf100"; }
+        // .icon-double-angle-right:before   { content: "\uf101"; }
+        // .icon-double-angle-up:before      { content: "\uf102"; }
+        // .icon-double-angle-down:before    { content: "\uf103"; }
+        // .icon-angle-left:before           { content: "\uf104"; }
+        // .icon-angle-right:before          { content: "\uf105"; }
+        // .icon-angle-up:before             { content: "\uf106"; }
+        // .icon-angle-down:before           { content: "\uf107"; }
+        // .icon-desktop:before              { content: "\uf108"; }
+        // .icon-laptop:before               { content: "\uf109"; }
+        // .icon-tablet:before               { content: "\uf10a"; }
+        // .icon-mobile-phone:before         { content: "\uf10b"; }
+        // .icon-circle-blank:before         { content: "\uf10c"; }
+        // .icon-quote-left:before           { content: "\uf10d"; }
+        // .icon-quote-right:before          { content: "\uf10e"; }
+
+        // .icon-spinner:before              { content: "\uf110"; }
+        // .icon-circle:before               { content: "\uf111"; }
+        // .icon-reply:before                { content: "\uf112"; }
+        // .icon-github-alt:before           { content: "\uf113"; }
+        // .icon-folder-close-alt:before     { content: "\uf114"; }
+        // .icon-folder-open-alt:before      { content: "\uf115"; }
+        text.appendChild(document.createTextNode(icons.music));
+
+        function updateIcon(){
+            var names = Object.keys(icons);
+            var idx = Math.floor(Math.random() * names.length);
+            var name = names[idx];
+            var icon = icons[name];
+            document.querySelector('.icon').textContent = icon;
+            setTimeout(updateIcon, 1000);
+        }
+        updateIcon();
+
     </script>
 
 </body>
